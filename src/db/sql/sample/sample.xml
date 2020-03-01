@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sample">  
+  <select id="selectSampleList">
+    SELECT USER_ID
+         , USER_NM
+         , EMAIL
+      FROM TB_USER  
+     <if test="userNm != null and userNm !=''">
+     WHERE USER_NM = #{userNm}
+     </if>
+  </select>
+
+  <select id="selectSample">
+    SELECT USER_ID
+         , USER_NM
+         , EMAIL
+      FROM TB_USER  
+     WHERE USER_ID = #{userId}
+  </select>
+
+  <insert id="insertSample">
+    INSERT INTO sm_test
+    (
+        user_id
+      , user_nm
+      , age      
+    )
+    VALUES
+    (
+        #{user_id}
+      , #{user_nm}
+      , ${age}
+    )
+  </insert>
+
+  <delete id="deleteSample">
+    DELETE FROM sm_test WHERE user_id = #{user_id}
+  </delete>
+
+  <update id="updateSample">
+    UPDATE sm_test
+       SET user_nm = #{user_nm}
+         , age     = #{age}
+     WHERE user_id = #{user_id}
+  </update>
+
+</mapper>
