@@ -7,15 +7,15 @@ export default {
         //sayHello: () => "Hello..."
         //sayHello: () => asyncTest()
         sayHello: async () => {
-            //const user = await sayHello.getUser();
-            //console.log("user", user);
+            const user = await sayHello.getUser();
+            console.log("user", user);
 
             //console.log("insert....");
             //const resultInsert = await sayHello.insertUser();
 
-            const resultupdate = await sayHello.updateUser();
+            //const resultupdate = await sayHello.updateUser();
 
-            const resultInsert = await sayHello.insertUser();
+            //const resultInsert = await sayHello.insertUser();
             return "ddd";
         }
     }
