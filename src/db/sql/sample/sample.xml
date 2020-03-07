@@ -20,29 +20,28 @@
   </select>
 
   <insert id="insertSample">
-    INSERT INTO sm_test
+    INSERT INTO TB_USER
     (
-        user_id
-      , user_nm
-      , age      
+        USER_ID
+      , USER_NM
+      , EMAIL      
     )
     VALUES
     (
-        #{user_id}
-      , #{user_nm}
-      , ${age}
+        #{userId}
+      , #{userNm}
+      , #{email}
     )
   </insert>
 
-  <delete id="deleteSample">
-    DELETE FROM sm_test WHERE user_id = #{user_id}
-  </delete>
-
   <update id="updateSample">
-    UPDATE sm_test
-       SET user_nm = #{user_nm}
-         , age     = #{age}
-     WHERE user_id = #{user_id}
+    UPDATE TB_USER
+       SET USER_NM = #{userNm}
+         , EMAIL   = #{email}
+     WHERE USER_ID = #{userId}
   </update>
 
+  <delete id="deleteSample">
+    DELETE FROM TB_USER WHERE USER_ID = #{userId}
+  </delete>
 </mapper>

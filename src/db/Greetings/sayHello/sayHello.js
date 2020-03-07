@@ -17,3 +17,30 @@ export async function getUser() {
 
     return row;
 }
+
+export async function insertUser() {
+    const param = { userId: "55", userNm: "LEESUNGMIN", email: "lsmin01@gmail.com" };
+    const cnt = await commonDao.insert("sample.insertSample", param);
+
+    console.log("cnt", cnt);
+
+    return row;
+}
+
+export async function updateUser() {
+    const param = { userId: "55", userNm: "LEESUNGMIN11111", email: "lsmin01@gmail.com" };
+    const cnt = await commonDao.update("sample.updateSample", param);
+
+    console.log("updateUser", cnt);
+
+    return cnt;
+}
+
+export async function deleteUser() {
+    const param = { userId: "55", userNm: "LEESUNGMIN", email: "lsmin01@gmail.com" };
+    const cnt = await commonDao.delete1("sample.deleteSample", param);
+
+    console.log("cnt", cnt);
+
+    return cnt;
+}

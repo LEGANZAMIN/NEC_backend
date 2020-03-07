@@ -41,6 +41,8 @@ export async function selectList(queryInfo, queryParam) {
         return rows;
     } catch (err) {
         throw err;
+    } finally {
+        if (connection) connection.release();
     }
 }
 
@@ -57,26 +59,61 @@ export async function selectOne(queryInfo, queryParam) {
         return rows[0];
     } catch (err) {
         throw err;
+    } finally {
+        if (connection) connection.release();
     }
 }
 
-async function asyncTest() {
+export async function insert(queryInfo, queryParam) {
     let connection;
-
     try {
         connection = await pool.getConnection();
-        const rows = await connection.query("SELECT * FROM TB_USER WHERE USER_ID  = '11'");
-        console.log("rows", rows);
-        console.log("rows", rows[0]);
-        console.log("rows", rows[0].USER_ID);
 
-        //return "Sungmin...";
-        return rows[0].USER_ID;
+        const { NAMESPACE, SQL_ID } = getQueryInfo(queryInfo);
+        const pStmt = mybatisMapper.getStatement(NAMESPACE, SQL_ID, queryParam);
+
+        const { affectedRows } = await connection.query(pStmt);
+
+        return affectedRows;
     } catch (err) {
         throw err;
     } finally {
-        if (conn) connection.release();
+        if (connection) connection.release();
     }
 }
 
-export default asyncTest;
+export async function update(queryInfo, queryParam) {
+    let connection;
+    try {
+        connection = await pool.getConnection();
+
+        const { NAMESPACE, SQL_ID } = getQueryInfo(queryInfo);
+        const pStmt = mybatisMapper.getStatement(NAMESPACE, SQL_ID, queryParam);
+
+        const { affectedRows } = await connection.query(pStmt);
+
+        return affectedRows;
+    } catch (err) {
+        throw err;
+    } finally {
+        if (connection) connection.release();
+    }
+}
+
+export async function delete1(queryInfo, queryParam) {
+    let connection;
+    try {
+        connection = await pool.getConnection();
+
+        const { NAMESPACE, SQL_ID } = getQueryInfo(queryInfo);
+        const pStmt = mybatisMapper.getStatement(NAMESPACE, SQL_ID, queryParam);
+
+        const { affectedRows } = await connection.query(pStmt);
+
+        return affectedRows;
+    } catch (err) {
+        throw err;
+    } finally {
+        if (connection) connection.release();
+    }
+}
