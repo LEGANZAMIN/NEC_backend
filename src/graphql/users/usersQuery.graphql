@@ -1,0 +1,4 @@
+type Query {
+    selectUser(userId: String!): TB_USER!
+    selectUserList(userNm: String!): [TB_USER!]!
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sample">  
-  <select id="selectSampleList">
+<mapper namespace="users">  
+  <select id="selectUserList">
     SELECT USER_ID
          , USER_NM
          , EMAIL
@@ -11,7 +11,7 @@
      </if>
   </select>
 
-  <select id="selectSample">
+  <select id="selectUser">
     SELECT USER_ID
          , USER_NM
          , EMAIL
@@ -19,7 +19,7 @@
      WHERE USER_ID = #{userId}
   </select>
 
-  <insert id="insertSample">
+  <insert id="insertUser">
     INSERT INTO TB_USER
     (
         USER_ID
@@ -34,14 +34,15 @@
     )
   </insert>
 
-  <update id="updateSample">
+  <update id="updateUser">
     UPDATE TB_USER
        SET USER_NM = #{userNm}
          , EMAIL   = #{email}
      WHERE USER_ID = #{userId}
   </update>
 
-  <delete id="deleteSample">
+  <delete id="deleteUser">
     DELETE FROM TB_USER WHERE USER_ID = #{userId}
   </delete>
+  
 </mapper>

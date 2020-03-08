@@ -1,0 +1,5 @@
+type Mutation {
+    insertUser(userId: String!, userNm: String!, email: String!): Boolean!
+    updateUser(userId: String!, userNm: String!, email: String!): Boolean!
+    deleteUser(userId: String!): Boolean!
+}

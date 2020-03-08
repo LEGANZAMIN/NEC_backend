@@ -1,0 +1,5 @@
+type TB_USER {
+    USER_ID: String!
+    USER_NM: String
+    EMAIL: String
+}

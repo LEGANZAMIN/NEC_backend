@@ -1,3 +1,4 @@
+import "../../env";
 import mariadb from "mariadb";
 import mybatisMapper from "mybatis-mapper";
 import mapper from "./sql/mapper";
@@ -7,11 +8,11 @@ mybatisMapper.createMapper(mapper);
 
 // Pool
 const pool = mariadb.createPool({
-    host: "127.0.0.1",
-    port: "3306",
-    user: "necuser",
-    password: "necuser001",
-    database: "NECDB",
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NM,
     connectionLimit: 5
 });
 
